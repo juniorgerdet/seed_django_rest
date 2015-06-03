@@ -12,7 +12,8 @@ class Vehicles(models.Model):
     driver_user = models.ForeignKey(User, blank=True, null=True, related_name='user_vehicle')
     vehicle = models.CharField(max_length=256, blank=True)
     license_plate = models.CharField(max_length=64, blank=True)
-    enabled = models.BooleanField(default=0)
+    enabled = models.BooleanField(default=1)
+    busy = models.BooleanField(default=0)
     create_time =models.DateTimeField(default=timezone.now, editable=False, blank=True, null=True)
 
 class Rides(models.Model):

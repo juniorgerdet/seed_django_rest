@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Profile, Vehicles
+from .models import Profile, Vehicles, Rides
 
 
 # Create your views here.
@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password', 'email', 'first_name', 'last_name', 'profile')
-        write_only_fields = ('username', 'password', )
+        write_only_fields = ('password', )
     def create(self, validated_data):
         profile_data = validated_data.pop('profile')
         user = User.objects.create(**validated_data)
@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 class VehiclesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicles
-        fields = ('id', 'driver_user', 'vehicle', 'license_plate', 'enabled'
+        fields = ('id', 'driver_user', 'vehicle', 'license_plate', 'enabled', 'bugsy')
 
 class RidesSerializer(serializers.ModelSerializer):
     class Meta:

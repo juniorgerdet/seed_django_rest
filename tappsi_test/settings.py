@@ -36,10 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'provider',
-    'provider.oauth2',
+    'corsheaders',
+    'oauth2_provider',
     'rest_framework',
-    'tappsi_api'
+    'tappsi_api',
+    'lettuce.django'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,8 +49,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 
 ROOT_URLCONF = 'tappsi_test.urls'
@@ -88,10 +92,27 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_oauth.authentication.OAuth2Authentication',
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    # 'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
 }
+
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope',
+    },
+}
+
+
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    # Uncomment following if you want to access the admin
+    #'django.contrib.auth.backends.ModelBackend'
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
