@@ -1,41 +1,43 @@
-# -*- coding: utf-8 -*-
-from .models import UserProfiles
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from rest_framework.exceptions import ParseError
-# from rest_framework.pagination import PaginationSerializer
-from datetime import datetime
+from .models import Profile, Vehicles
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
+# Create your views here.
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserProfiles
-        fields = ('user', 'role_alt', 'gender', 'birthdate',  'phone', 'profile_pic')
+        model = Profile
+        fields = ('role_alt', )
 
 class UserSerializer(serializers.ModelSerializer):
-    # profile = UserProfileSerializer()
-    # role_alt = serializers.SerializerMethodField()
-    role_alt = serializers.Field(source='profile.role_alt')
+    profile = ProfileSerializer()
+    email = serializers.EmailField()
     class Meta:
         model = User
-        fields = ('id', 'password', 'username', 'email', 'last_name', 'first_name', 'role_alt', 'is_active', 'date_joined')
-        write_only_fields = ('password','is_active', 'date_joined',)
+        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'profile')
+        write_only_fields = ('username', 'password', )
+    def create(self, validated_data):
+        profile_data = validated_data.pop('profile')
+        user = User.objects.create(**validated_data)
+        Profile.objects.create(user=user, **profile_data)
+        return user
     def validate(self, attrs):
-        
-        invalid_email = False
-        invalid_username = False
-        exist_email = True if User.objects.filter(email = attrs['email']) else False
-        # invalid_email = True if check_email else False
-        exist_username = True if User.objects.filter(username = attrs['username']) else False
-        # invalid_username = True if check_username else False
-        if exist_username:
-            raise serializers.ValidationError("{username_not_available}")
-        if exist_email:
+        invalid_email = True if User.objects.filter(email = attrs['email']) else False
+        invalid_username = True if User.objects.filter(username = attrs['username']) else False
+        if invalid_email:
             raise serializers.ValidationError("email_not_available")
+        if invalid_username:
+            raise serializers.ValidationError("username_not_available")
         return attrs
-    # def get_role_alt(self, obj):
-    #     up = UserProfiles.objects.get(user = obj.id)
-    #     print up
-    #     ser = UserProfileSerializer(up)
-    #     return ser.data.role_alt
+
+class VehiclesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vehicles
+        fields = ('id', 'driver_user', 'vehicle', 'license_plate', 'enabled'
+
+class RidesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rides
+        fields = ('id', 'driver_user', 'origin', 'client_user', 'vehicle', 'status', 'create_time')
+        write_only_fields = ('create_time', )
 

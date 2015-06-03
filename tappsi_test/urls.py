@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from tappsi_api.views import UserViewSet
 from rest_framework.routers import DefaultRouter
-from tappsi_api.viewsets import UserViewSet
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'user', UserViewSet)
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^oauth2/', include('provider.oauth2.urls', namespace = 'oauth2')),
+	url(r'^auth/', include('provider.oauth2.urls', namespace='oauth2')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
 )
