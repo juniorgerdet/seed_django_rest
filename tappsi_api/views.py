@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User
-from .models import Vehicles, Rides
-from .serializers import UserSerializer, VehiclesSerializer, RidesSerializer
+from .models import Rides
+from .serializers import UserSerializer, RidesSerializer
 from rest_framework import viewsets, mixins, permissions, renderers, status, generics
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.response import Response
@@ -34,11 +34,6 @@ class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 		except Exception, e:
 			return Response({'error': "invalid_request", "details": e}, status=status.HTTP_400_BAD_REQUEST)
 
-
-class VehicleViewSet(viewsets.ModelViewSet):
-	serializer_class = VehiclesSerializer
-	queryset = Vehicles.objects.all()
-	permission_classes = (permissions.IsAuthenticated,)
 
 	
 class RideViewSet(ProtectedResourceView, viewsets.ModelViewSet):

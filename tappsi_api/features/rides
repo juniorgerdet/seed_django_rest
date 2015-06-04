@@ -1,0 +1,16 @@
+# Feature: Rides
+
+#  	Scenario: Register a rides
+#     	Given i have the payload
+# 	    """
+# 	    {
+# 	    	'username':'juniorgerdet',
+# 	    	'email':'juniorgerdet@gmzil.com',
+# 	    	'password':'Test10',
+# 	    	'last_name':'Junior',
+# 	    	'first_name':'Gerdet',
+# 	    	'role_alt':'Taxista'
+# 	    }
+# 	    """ 
+# 		When i request 'POST http://127.0.0.1:8000/rides':
+#     	Then i get the responde code 201

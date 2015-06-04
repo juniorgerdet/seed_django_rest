@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Profile, Vehicles, Rides
+from .models import Profile, Rides
 
 
 # Create your views here.
@@ -29,11 +29,6 @@ class UserSerializer(serializers.ModelSerializer):
         if invalid_username:
             raise serializers.ValidationError("username_not_available")
         return attrs
-
-class VehiclesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Vehicles
-        fields = ('id', 'driver_user', 'vehicle', 'license_plate', 'enabled', 'bugsy')
 
 class RidesSerializer(serializers.ModelSerializer):
     class Meta:

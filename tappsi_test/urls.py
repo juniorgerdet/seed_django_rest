@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from tappsi_api.views import UserViewSet, VehicleViewSet
+from tappsi_api.views import UserViewSet, RideViewSet
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
 admin.autodiscover()
@@ -7,7 +7,7 @@ admin.autodiscover()
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet)
-router.register(r'vehicles', VehicleViewSet)
+router.register(r'rides', RideViewSet)
 
 urlpatterns = patterns('',
     # Examples:

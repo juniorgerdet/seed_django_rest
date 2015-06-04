@@ -1,0 +1,23 @@
+Internal Server Error: /users
+Traceback (most recent call last):
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "c:\Python27\lib\site-packages\django\middleware\common.py", line 72, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 614, in is_valid_path
+    resolve(path, urlconf)
+  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 489, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
+    for pattern in self.url_patterns:
+  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
+    __import__(name)
+  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
+    from tappsi_api.views import UserViewSet, RideViewSet
+  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 3, in <module>
+    from .models import Vehicles, Rides
+ImportError: cannot import name Vehicles
