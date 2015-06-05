@@ -1,23 +1,53 @@
-Internal Server Error: /users
+Not Found: /accounts/login/
+Not Found: /accounts/
+Internal Server Error: /rides/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 87, in get_response
-    response = middleware_method(request)
-  File "c:\Python27\lib\site-packages\django\middleware\common.py", line 72, in process_request
-    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 614, in is_valid_path
-    resolve(path, urlconf)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 489, in resolve
-    return get_resolver(urlconf).resolve(path)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 3, in <module>
-    from .models import Vehicles, Rides
-ImportError: cannot import name Vehicles
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\viewsets.py", line 85, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\oauth2_provider\views\mixins.py", line 207, in dispatch
+    return super(ProtectedResourceMixin, self).dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 451, in dispatch
+    response = self.handle_exception(exc)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 448, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\mixins.py", line 20, in create
+    self.perform_create(serializer)
+  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 41, in perform_create
+    serializer.save(taxi_drive=self.request.user)
+  File "c:\Python27\lib\site-packages\rest_framework\serializers.py", line 165, in save
+    self.instance = self.create(validated_data)
+  File "c:\Python27\lib\site-packages\rest_framework\serializers.py", line 775, in create
+    instance = ModelClass.objects.create(**validated_data)
+  File "c:\Python27\lib\site-packages\django\db\models\manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\db\models\query.py", line 372, in create
+    obj.save(force_insert=True, using=self.db)
+  File "c:\Python27\lib\site-packages\django\db\models\base.py", line 590, in save
+    force_update=force_update, update_fields=update_fields)
+  File "c:\Python27\lib\site-packages\django\db\models\base.py", line 618, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "c:\Python27\lib\site-packages\django\db\models\base.py", line 699, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "c:\Python27\lib\site-packages\django\db\models\base.py", line 732, in _do_insert
+    using=using, raw=raw)
+  File "c:\Python27\lib\site-packages\django\db\models\manager.py", line 92, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\db\models\query.py", line 921, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "c:\Python27\lib\site-packages\django\db\models\sql\compiler.py", line 920, in execute_sql
+    cursor.execute(sql, params)
+  File "c:\Python27\lib\site-packages\django\db\backends\utils.py", line 81, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "c:\Python27\lib\site-packages\django\db\backends\utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "c:\Python27\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "c:\Python27\lib\site-packages\django\db\backends\utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "c:\Python27\lib\site-packages\django\db\backends\sqlite3\base.py", line 485, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such table: tappsi_api_ride

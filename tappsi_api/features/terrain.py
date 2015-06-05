@@ -1,61 +1,62 @@
 # -*- coding: utf-8 -*-
 from lettuce import *
 from rest_framework.test import APIRequestFactory, APIClient, force_authenticate
+from rest_framework.authtoken.models import Token
 from django.core.management import call_command
 from logging import getLogger
 from django.test.client import Client
 from nose.tools import assert_equals
-import json, ast, logging, unicodedata
-from tappsi_api.models import Rides
+import json, ast, logging, unicodedata, time
+from tappsi_api.models import Profile, Ride
 from django.contrib.auth.models import User
-from oauth2_provider.models import Application
-
+from oauth2_provider.models import Application, AccessToken
+from django.db.models.loading import get_model
+from django.contrib.auth.hashers import make_password
+from django.utils import timezone
+import datetime
 
 logging.basicConfig(filename='logs/features.log',level=logging.INFO)
 
 @before.all
 def set_browser():
+    world.rest = APIClient(enforce_csrf_checks=True)
+
+@before.each_scenario
+def clean_scenario(step):
+    world.login=False
     call_command('flush', interactive=False, verbosity=0)
-    world.rest = APIClient()
+
+@step(u'Register the app')
+def register_the_app(step):
+    for app_dict in step.hashes:
+        world.app_id=create_auth_client(app_dict['name'], app_dict['client_id'], app_dict['client_secret'])
 
 @step(u'i have the payload')
 def i_have_the_payload(step):
-	world.payload=step.multiline
-
+    world.payload = json.loads(step.multiline.replace('\'', '"'))
 
 @step(r'i send a POST request on "([^"]*)"')
 def i_send_a_get_request_on_url(step, url):
-	try:
-		payload = json.loads(world.payload.replace('\'', '"'))
-		world.response = world.rest.post(url, payload,  format='json')
-		# logging.info('R: %s ', world.response)
-	except Exception, e:
-		raise
+		world.response = world.rest.post(url, world.payload,  format='json')
 
 @step(r'I send a GET request on "([^"]*)"')
 def i_send_a_get_request_on_url(step, url):
 	try:
-		payload = json.loads(world.payload.replace('\'', '"'))
-		world.response = world.rest.post(url, payload,  format='json')
-		# logging.info('R: %s ', world.response)
+		world.response = world.rest.post(url, world.payload,  format='json')
 	except Exception, e:
 		raise
 
 @step(r'I send a PUT request on "([^"]*)"')
 def i_send_a_put_request_on_url(step, url):
 	try:
-		payload = json.loads(world.payload.replace('\'', '"'))
-		world.response = world.rest.post(url, payload,  format='json')
-		# logging.info('R: %s ', world.response)
+		world.response = world.rest.post(url, world.payload,  format='json')
 	except Exception, e:
 		raise
 
 @step(r'I send a DELETE request on "([^"]*)"')
 def i_send_a_delete_request_on_url(step, url):
 	try:
-		payload = json.loads(world.payload.replace('\'', '"'))
-		world.response = world.rest.post(url, payload,  format='json')
-		# logging.info('R: %s ', world.response)
+		world.response = world.rest.post(url, world.payload,  format='json')
 	except Exception, e:
 		raise
 
@@ -68,28 +69,52 @@ def check_response(step, expected):
 def check_response(step, expected):
     assert_equals(world.response.data, step.multiline)
 
-@step('I authenticate as "(.*)"')
-def i_authenticate(step, user):
-	user = User.objects.get(username='lauren')
-	world.rest.force_authenticate(user=user)
 
-@step('i have user exists with username "(.*) and data')
+@step('I authenticate as user "(.*)"')
+def i_authenticate(step, user):
+    user = User.objects.get(username=user)
+    access_token = AccessToken.objects.create(
+        user=user, token='WpcQH4L8Lf99cuQ2kWwITY8DD9xxM3',
+        application=world.app_id, scope='read write',
+        expires=timezone.now() + datetime.timedelta(days=1)
+    )
+    try:
+        world.login=world.rest.credentials(HTTP_AUTHORIZATION='Bearer ' + "WpcQH4L8Lf99cuQ2kWwITY8DD9xxM3")
+        world.login=True
+    except Exception, e:
+        raise
+
+@step('I have user exists with username "(.*) and data')
 def authen(step, model):
     model=models.get_model('tappsi_api', model)
     poll = Poll.objects.create(title=title)
     polls.save()
 
-@step('a the following "(.*)"')
-def i_have_the_following_model(step, model):
-    model=models.get_model('tappsi_api', model)
-    # poll = Poll.objects.create(title=title)
-    # polls.save()
+@step('The following data on "(.*)"')
+def the_following_data_on_model(step, model):
+    if model=="User":
+    	for user_dict in step.hashes:
+            user = User.objects.create(id=user_dict['id'], password=make_password(user_dict['password']), username=user_dict['username'], first_name=user_dict['first_name'], last_name=user_dict['last_name'])
+            profile={"role_alt":user_dict['role_alt']}
+            Profile.objects.create(user=user, **profile)
+    else:
+        expected_model=get_model('tappsi_api', model)
+        for model_dict in step.hashes:
+            logging.info('R: %s ', model_dict)
+            a_model = expected_model(**model_dict)
+            a_model.save()
+    
+@after.each_scenario
+def sleep_scenario(step):
+    if world.login:
+    	print "Doing logout on tappsi_api..."
+        world.rest.logout();
+    time.sleep(1)
 
-@step(r'I request "([^"]*)"')
-def i_request_group(step, group):
-	try:
-		payload = json.loads(world.payload.replace('\'', '"'))
-		world.response = world.rest.post(group, payload,  format='json')
-		# logging.info('R: %s ', world.response)
-	except Exception, e:
-		raise
+# logging.info('R: %s ', world.response)
+
+def create_auth_client(Name, client_Id, client_Secret):
+        user=User.objects.create_superuser(username='root', password='Test10', email='root@email.com')
+        return Application.objects.create(name=Name, client_id=client_Id, client_secret=client_Secret, user=user, 
+                                   client_type=Application.CLIENT_CONFIDENTIAL,
+                                   authorization_grant_type=Application.GRANT_PASSWORD)

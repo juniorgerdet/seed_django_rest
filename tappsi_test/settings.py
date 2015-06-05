@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'oauth2_provider',
     'rest_framework',
+    'django_user_agents',
     'tappsi_api',
     'lettuce.django'
 )
@@ -54,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 )
 
 ROOT_URLCONF = 'tappsi_test.urls'
@@ -111,9 +113,9 @@ OAUTH2_PROVIDER = {
 
 
 AUTHENTICATION_BACKENDS = (
-    'oauth2_provider.backends.OAuth2Backend',
+    # 'oauth2_provider.backends.OAuth2Backend',
     # Uncomment following if you want to access the admin
-    #'django.contrib.auth.backends.ModelBackend'
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -144,3 +146,11 @@ LOGGING = {
     },
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
+USER_AGENTS_CACHE = 'default'
