@@ -7,14 +7,10 @@
 #notes           :
 #python_version  :2.7.10  
 #==============================================================================
-from rest_framework import permissions
+from django.db.models.signals import pre_save
 from django.contrib.auth.models import User
+from django.dispatch import receiver
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj=None):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        if isinstance(obj, User): 
-            return obj.id == request.user.id        
-        else:
-            return False
+@receiver(pre_save, sender=User)
+def my_handler(sender, **kwargs):
+	print "save user"

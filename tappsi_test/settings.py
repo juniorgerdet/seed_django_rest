@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'oauth2_provider',
     'rest_framework',
     'django_user_agents',
+    'rest_framework_swagger',
     'tappsi_api',
     'lettuce.django'
 )
@@ -93,14 +94,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.ext.rest_framework.OAuth2Authentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-    # 'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.StandardResultsSetPagination'
+    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 
@@ -113,15 +120,13 @@ OAUTH2_PROVIDER = {
 
 
 AUTHENTICATION_BACKENDS = (
-    # 'oauth2_provider.backends.OAuth2Backend',
+    'oauth2_provider.backends.OAuth2Backend',
     # Uncomment following if you want to access the admin
-    'django.contrib.auth.backends.ModelBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-LETTUCE_TEST_SERVER = 'lettuce.django.server.DjangoServer'
-LETTUCE_SERVER_PORT = 9000
 
 LOGGING = {
     'version': 1,
@@ -154,3 +159,5 @@ CACHES = {
 }
 
 USER_AGENTS_CACHE = 'default'
+
+LETTUCE_SERVER_PORT = 7000
