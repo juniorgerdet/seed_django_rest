@@ -1,5 +1,5 @@
-#title           :pyscript.py
-#description     :Extend letucce for implemented BDD on Django.
+#title           :serializers.py
+#description     :
 #author          :juniorgerdet
 #date            :04-06-2015
 #version         :0.1
