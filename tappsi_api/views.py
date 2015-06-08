@@ -29,6 +29,8 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework_xml.parsers import XMLParser
 from rest_framework_xml.renderers import XMLRenderer
+from django.shortcuts import get_object_or_404
+
 
 class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = UserSerializer
@@ -65,6 +67,16 @@ class RideViewSet(ProtectedResourceView, viewsets.ModelViewSet):
                 return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
         except Exception, e:
             return Response({'error': e}, status=status.HTTP_400_BAD_REQUEST)
+    def update(self, request, pk=0):
+        ride = get_object_or_404(Ride, pk = pk)
+        print ride
+        if ride.taxi_driver == request.user:
+            serializer = RideSerializer(ride, data=request.DATA, context= {'request': request, 'instace':ride}, partial = True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'errors': 'forbidden'}, status = status.HTTP_403_FORBIDDEN)
 
 class AvailableView(generics.ListAPIView):
     queryset = Driver.objects.all()
@@ -110,8 +122,6 @@ class AvailableView(generics.ListAPIView):
              #  request.user_agent.os.family 
              #  request.user_agent.os.version 
              #  request.user_agent.os.version_string 
-        
-
 
 class CustomCoursePaginator(PageNumberPagination):
     def get_paginated_response(self, data):

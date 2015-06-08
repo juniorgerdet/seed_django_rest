@@ -51,12 +51,28 @@ class RideSerializer(serializers.ModelSerializer):
     user_driver=serializers.SerializerMethodField()
     class Meta:
         model = Ride
-        fields = ('taxi_driver', "client", 'user_client', 'user_driver', 'origin', 'destiny', 'active')
+        fields = ("id", 'origin', 'destiny', 'taxi_driver', "client", 'user_client', 'user_driver', 'active')
         extra_kwargs = {'taxi_driver': {'write_only': True}, 'client': {'write_only': True}}
+    def validate(self, attrs):
+        if self.context["request"].method=='POST':
+            ride_active = True if Ride.objects.filter(taxi_driver = self.context["request"].user, active=True) else False
+            if ride_active:
+                raise serializers.ValidationError("taxi_not_available")
+        return attrs
+    def update(self, instance, validated_data):
+        instance.origin = validated_data.get('origin', instance.origin)
+        instance.destiny = validated_data.get('destiny', instance.destiny)
+        instance.client = validated_data.get('client', instance.client)
+        instance.active = validated_data.get('active', instance.active)
+        if not instance.active:
+            Driver.objects.filter(user=self.context["request"].user).update(busy=False)
+        instance.save()
+        return instance
     def get_user_client(self, obj):
-        return {'id': obj.id, 'first_name': obj.taxi_driver.first_name , 'last_name' : obj.taxi_driver.last_name}
+        return {'id': obj.client.id, 'first_name': obj.client.first_name , 'last_name' : obj.client.last_name}
     def get_user_driver(self, obj):
-        return {'id': obj.id, 'first_name': obj.client.first_name, 'last_name' : obj.client.last_name}
+        return {'id': obj.taxi_driver.id, 'first_name': obj.taxi_driver.first_name, 'last_name' : obj.taxi_driver.last_name}
+
 
 class DriverSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField(source='user.id',  read_only=True)
