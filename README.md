@@ -17,9 +17,7 @@ A powerful combination:
 
 # Overview
 
-Test based on the platform tappsi.
-
-Some reasons you might want to use REST framework:
+Test of validation of skill for tappsi.co.
 
 # Requirements
 
