@@ -12,7 +12,7 @@ A powerful combination:
 * Parsers
 * Renders
 * Continuos Integrations
-* Deteccion of Users Agents
+* Detection of Users Agents
 * Swagger Documentation
 
 # Overview
