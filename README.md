@@ -4,7 +4,7 @@
 
 A powerful combination:
 
-* Lettucce BDD
+* Lettuce BDD
 * Django Oauth Toolkit
 * CORSHEADERS
 * Native Pagination
@@ -12,12 +12,12 @@ A powerful combination:
 * Parsers
 * Renders
 * Continuos Integrations
-* Deteccion of Users Agents
+* Detection of Users Agents
 * Swagger Documentation
 
 # Overview
 
-Test of validation of skill for tappsi.co.
+Test of skill validation for tappsi.co.
 
 # Requirements
 
@@ -32,7 +32,7 @@ I recomend virtualenv
     source /path/a/name/bin/activate
     
 
-# Installation of depedencies
+# Installation of dependencies
 
 Install using `pip`...
 
@@ -51,7 +51,7 @@ For execute the automatized test:
     python manager.py -d harvest tappsi_api/features/
 
 
-**Note**: The best step is optional, when you execute the automatized the database be load with credentials.
+**Note**:   The next step is optional, when you execute the automatized tests, the database is loaded with the credentials.
 
 Step 1: Register an application
 To register the app:
@@ -70,10 +70,10 @@ To register the app:
   
 Click on the link to create a new application and fill the form with the following data:
 
-Name: just a name of your choice
-Client Type: confidential
-Authorization Grant Type: Resource owner password-based
-Save your app!
+* Name: just a name of your choice
+* Client Type: confidential
+* Authorization Grant Type: Resource owner password-based
+* Save your app!
 
 # Documentation & Support
 
