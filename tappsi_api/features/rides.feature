@@ -17,9 +17,8 @@ Feature: Rides
 	    """
 	    {
 	    	'client': 2,
-	    	'origin':'juniorgerdet@gmil.com',
-	    	'destiny':'Test10',
-	    	'active': 1
+	    	'origin':'Calabozo, Guarico',
+	    	'destiny':'Bogota, Colombia'
 	    }
 	    """ 
 		When I send a POST request on "http://127.0.0.1:7000/api/v1/rides/"

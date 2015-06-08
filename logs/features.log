@@ -1,207 +1,182 @@
-ERROR:django.request:Internal Server Error: /api/v1/users/
+06/07/2015 11:00:44 AM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 11:00:44 AM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 11:00:45 AM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 11:00:45 AM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 11:00:45 AM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 11:00:46 AM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 11:00:46 AM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 11:00:47 AM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 11:00:47 AM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 11:00:47 AM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 11:00:48 AM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 11:00:48 AM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 11:00:49 AM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 11:00:53 AM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 77
-    taxi_drivers=Ride.objects.exclude(Q(user = invite.host) | Q(user = User(id =  id_guest) taxi_drive__in=user_ids, active=0).values_list('id', flat=True)
-                                                                                                         ^
-SyntaxError: invalid syntax
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 11:03:31 AM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 11:03:32 AM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 11:03:32 AM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 11:03:33 AM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 11:03:33 AM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 11:03:33 AM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 11:03:34 AM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 11:03:34 AM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 11:03:34 AM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 11:03:35 AM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 11:03:35 AM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 11:03:36 AM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 11:03:36 AM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 11:03:40 AM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 77
-    users=User.objects.filter(user=user_id,, many=True)
-                                           ^
-SyntaxError: invalid syntax
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 12:22:44 PM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 12:22:44 PM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 12:22:44 PM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 12:22:45 PM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 12:22:45 PM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 12:22:45 PM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 12:22:45 PM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 12:22:45 PM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 12:22:45 PM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 12:22:45 PM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 12:22:46 PM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 12:22:46 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 12:22:46 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 12:22:47 PM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 3, in <module>
-    from tappsi_api.models import Profile, Ride
-ImportError: cannot import name Profile
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 12:23:55 PM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 12:23:55 PM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 12:23:55 PM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 12:23:56 PM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 12:23:56 PM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 12:23:56 PM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 12:23:56 PM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 12:23:56 PM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 12:23:56 PM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 12:23:56 PM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 12:23:57 PM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 12:23:57 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 12:23:57 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 12:23:58 PM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 2, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 4, in <module>
-    from tappsi_api.serializers import UserSerializer, RideSerializer, DriverSerializer
-  File "c:\Users\Junior\tappsi_test\tappsi_api\serializers.py", line 7, in <module>
-    class ProfileSerializer(serializers.ModelSerializer):
-  File "c:\Users\Junior\tappsi_test\tappsi_api\serializers.py", line 8, in ProfileSerializer
-    class Meta:
-  File "c:\Users\Junior\tappsi_test\tappsi_api\serializers.py", line 9, in Meta
-    model = Profile
-NameError: name 'Profile' is not defined
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 12:24:15 PM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 12:24:15 PM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 12:24:15 PM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 12:24:15 PM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 12:24:15 PM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 12:24:15 PM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 12:24:15 PM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 12:24:15 PM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 12:24:16 PM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 12:24:16 PM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 12:24:16 PM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 12:24:16 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 12:24:16 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 12:24:17 PM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 137, in get_response
-    response = response.render()
-  File "c:\Python27\lib\site-packages\django\template\response.py", line 103, in render
-    self.content = self.rendered_content
-  File "c:\Python27\lib\site-packages\rest_framework\response.py", line 59, in rendered_content
-    ret = renderer.render(self.data, media_type, context)
-  File "c:\Python27\lib\site-packages\rest_framework\renderers.py", line 99, in render
-    separators=separators
-  File "c:\Python27\lib\json\__init__.py", line 250, in dumps
-    sort_keys=sort_keys, **kw).encode(obj)
-  File "c:\Python27\lib\json\encoder.py", line 207, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "c:\Python27\lib\json\encoder.py", line 270, in iterencode
-    return _iterencode(o, 0)
-  File "c:\Python27\lib\site-packages\rest_framework\utils\encoders.py", line 61, in default
-    return super(JSONEncoder, self).default(obj)
-  File "c:\Python27\lib\json\encoder.py", line 184, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: OperationalError('no such table: tappsi_api_userprofile',) is not JSON serializable
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 12:24:43 PM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 12:24:44 PM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 12:24:44 PM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 12:24:44 PM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 12:24:44 PM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 12:24:44 PM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 12:24:44 PM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 12:24:44 PM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 12:24:45 PM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 12:24:45 PM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 12:24:45 PM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 12:24:45 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 12:24:45 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 12:24:47 PM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 137, in get_response
-    response = response.render()
-  File "c:\Python27\lib\site-packages\django\template\response.py", line 103, in render
-    self.content = self.rendered_content
-  File "c:\Python27\lib\site-packages\rest_framework\response.py", line 59, in rendered_content
-    ret = renderer.render(self.data, media_type, context)
-  File "c:\Python27\lib\site-packages\rest_framework\renderers.py", line 99, in render
-    separators=separators
-  File "c:\Python27\lib\json\__init__.py", line 250, in dumps
-    sort_keys=sort_keys, **kw).encode(obj)
-  File "c:\Python27\lib\json\encoder.py", line 207, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "c:\Python27\lib\json\encoder.py", line 270, in iterencode
-    return _iterencode(o, 0)
-  File "c:\Python27\lib\site-packages\rest_framework\utils\encoders.py", line 61, in default
-    return super(JSONEncoder, self).default(obj)
-  File "c:\Python27\lib\json\encoder.py", line 184, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: OperationalError('no such table: tappsi_api_userprofile',) is not JSON serializable
-ERROR:django.request:Internal Server Error: /api/v1/users/
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`
+06/07/2015 12:51:30 PM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/07/2015 12:51:31 PM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/07/2015 12:51:31 PM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/07/2015 12:51:32 PM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/07/2015 12:51:32 PM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/07/2015 12:51:32 PM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/07/2015 12:51:33 PM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/07/2015 12:51:33 PM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/07/2015 12:51:34 PM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/07/2015 12:51:34 PM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/07/2015 12:51:35 PM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/07/2015 12:51:35 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/07/2015 12:51:35 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/07/2015 12:51:39 PM Internal Server Error: /api/v1/availables/
 Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 137, in get_response
-    response = response.render()
-  File "c:\Python27\lib\site-packages\django\template\response.py", line 103, in render
-    self.content = self.rendered_content
-  File "c:\Python27\lib\site-packages\rest_framework\response.py", line 59, in rendered_content
-    ret = renderer.render(self.data, media_type, context)
-  File "c:\Python27\lib\site-packages\rest_framework\renderers.py", line 99, in render
-    separators=separators
-  File "c:\Python27\lib\json\__init__.py", line 250, in dumps
-    sort_keys=sort_keys, **kw).encode(obj)
-  File "c:\Python27\lib\json\encoder.py", line 207, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "c:\Python27\lib\json\encoder.py", line 270, in iterencode
-    return _iterencode(o, 0)
-  File "c:\Python27\lib\site-packages\rest_framework\utils\encoders.py", line 61, in default
-    return super(JSONEncoder, self).default(obj)
-  File "c:\Python27\lib\json\encoder.py", line 184, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: AssertionError(u'`create()` did not return an object instance.',) is not JSON serializable
-ERROR:django.request:Internal Server Error: /api/v1/users/
-Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 137, in get_response
-    response = response.render()
-  File "c:\Python27\lib\site-packages\django\template\response.py", line 103, in render
-    self.content = self.rendered_content
-  File "c:\Python27\lib\site-packages\rest_framework\response.py", line 59, in rendered_content
-    ret = renderer.render(self.data, media_type, context)
-  File "c:\Python27\lib\site-packages\rest_framework\renderers.py", line 99, in render
-    separators=separators
-  File "c:\Python27\lib\json\__init__.py", line 250, in dumps
-    sort_keys=sort_keys, **kw).encode(obj)
-  File "c:\Python27\lib\json\encoder.py", line 207, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "c:\Python27\lib\json\encoder.py", line 270, in iterencode
-    return _iterencode(o, 0)
-  File "c:\Python27\lib\site-packages\rest_framework\utils\encoders.py", line 61, in default
-    return super(JSONEncoder, self).default(obj)
-  File "c:\Python27\lib\json\encoder.py", line 184, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: KeyError('phone',) is not JSON serializable
-ERROR:django.request:Internal Server Error: /api/v1/users/
-Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 11, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 11, in <module>
-    from tappsi_api.models import Profile, Ride, Drive
-ImportError: cannot import name Drive
-INFO:root:R: {u'origin': u'Cruz del perdon', u'active': 1, u'taxi_drive_id': 8, u'client_id': 12, u'destiny': u'Casco central'} 
-ERROR:django.request:Internal Server Error: /api/v1/users/
-Traceback (most recent call last):
-  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 98, in get_response
-    resolver_match = resolver.resolve(request.path_info)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 338, in resolve
-    for pattern in self.url_patterns:
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 367, in url_patterns
-    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
-  File "c:\Python27\lib\site-packages\django\core\urlresolvers.py", line 361, in urlconf_module
-    self._urlconf_module = import_module(self.urlconf_name)
-  File "c:\Python27\lib\importlib\__init__.py", line 37, in import_module
-    __import__(name)
-  File "c:\Users\Junior\tappsi_test\tappsi_test\urls.py", line 11, in <module>
-    from tappsi_api.views import UserViewSet, RideViewSet, AvailableView
-  File "c:\Users\Junior\tappsi_test\tappsi_api\views.py", line 11, in <module>
-    from tappsi_api.models import Profile, Ride, Drive
-ImportError: cannot import name Drive
-INFO:root:R: {u'origin': u'Cruz del perdon', u'active': 1, u'taxi_drive_id': 8, u'client_id': 12, u'destiny': u'Casco central'} 
-INFO:root:R: {u'origin': u'Cruz del perdon', u'active': 1, u'taxi_drive_id': 8, u'client_id': 12, u'destiny': u'Casco central'} 
-INFO:root:R: {u'origin': u'Cruz del perdon', u'active': 1, u'taxi_driver_id': 8, u'client_id': 12, u'destiny': u'Casco central'} 
-INFO:root:R: {u'origin': u'Centro, carrera 12', u'active': 0, u'taxi_driver_id': 3, u'client_id': 10, u'destiny': u'La salida de calabozo'} 
-INFO:root:R: {u'origin': u'La hoyada, torre 5', u'active': 1, u'taxi_driver_id': 15, u'client_id': 9, u'destiny': u'La california'} 
-INFO:root:R: {u'origin': u'Miranda, parque central', u'active': 0, u'taxi_driver_id': 7, u'client_id': 2, u'destiny': u'Hosp. El llanito'} 
-INFO:root:R: {u'origin': u'Los samanes', u'active': 0, u'taxi_driver_id': 4, u'client_id': 11, u'destiny': u'Chaparral'} 
-INFO:root:R: {u'origin': u'Cruz del perdon', u'active': 1, u'taxi_driver_id': 8, u'client_id': 12, u'destiny': u'Casco central'} 
-INFO:root:R: {u'origin': u'Centro, carrera 12', u'active': 0, u'taxi_driver_id': 3, u'client_id': 10, u'destiny': u'La salida de calabozo'} 
-INFO:root:R: {u'origin': u'La hoyada, torre 5', u'active': 1, u'taxi_driver_id': 15, u'client_id': 9, u'destiny': u'La california'} 
-INFO:root:R: {u'origin': u'Miranda, parque central', u'active': 0, u'taxi_driver_id': 7, u'client_id': 2, u'destiny': u'Hosp. El llanito'} 
-INFO:root:R: {u'origin': u'Los samanes', u'active': 0, u'taxi_driver_id': 4, u'client_id': 11, u'destiny': u'Chaparral'} 
+  File "c:\Python27\lib\site-packages\django\core\handlers\base.py", line 111, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "c:\Python27\lib\site-packages\django\views\decorators\csrf.py", line 57, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "c:\Python27\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 453, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "c:\Python27\lib\site-packages\rest_framework\views.py", line 373, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'NoneType'>`

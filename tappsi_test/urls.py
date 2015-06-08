@@ -26,6 +26,6 @@ urlpatterns = patterns('',
 	url(r'^api/v1/availables',  AvailableView.as_view(), name="logout"),
     url(r'^api/v1/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^docs/', include('rest_framework_swagger.urls')),
+    url(r'^api/v1/docs/', include('rest_framework_swagger.urls')),
 
 )

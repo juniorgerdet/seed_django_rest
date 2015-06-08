@@ -2,15 +2,15 @@
 #description     :Extend letucce for implemented BDD on Django.
 #author          :juniorgerdet
 #date            :04-06-2015
-#version         :0.4
-#usage           :python manager harvest
+#version         :0.1
+#usage           :
 #notes           :
 #python_version  :2.7.10  
 #==============================================================================
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Profile, Ride, Driver
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 class ProfileSerializer(serializers.ModelSerializer):
@@ -41,20 +41,29 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("username_not_available")
         return attrs
     
+class ResumeUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
 
 class RideSerializer(serializers.ModelSerializer):
+    user_client=serializers.SerializerMethodField()
+    user_driver=serializers.SerializerMethodField()
     class Meta:
         model = Ride
-        fields = ('id', 'taxi_drive', 'client', 'destiny', 'active')
-
-
-# return Response({
-#                     'status': 'Unauthorized',
-#                     'message': 'This account has been disabled.'
-#                 }, status=status.HTTP_401_UNAUTHORIZED)
+        fields = ('taxi_driver', "client", 'user_client', 'user_driver', 'origin', 'destiny', 'active')
+        extra_kwargs = {'taxi_driver': {'write_only': True}, 'client': {'write_only': True}}
+    def get_user_client(self, obj):
+        return {'id': obj.id, 'first_name': obj.taxi_driver.first_name , 'last_name' : obj.taxi_driver.last_name}
+    def get_user_driver(self, obj):
+        return {'id': obj.id, 'first_name': obj.client.first_name, 'last_name' : obj.client.last_name}
 
 class DriverSerializer(serializers.ModelSerializer):
-    rides = RideSerializer(many=True,read_only=True)
+    id = serializers.ReadOnlyField(source='user.id',  read_only=True)
+    first_name = serializers.ReadOnlyField(source='user.first_name',  read_only=True)
+    last_name = serializers.ReadOnlyField(source='user.last_name',  read_only=True)
+    username = serializers.ReadOnlyField(source='user.username',  read_only=True)
+    email = serializers.ReadOnlyField(source='user.email',  read_only=True)
     class Meta:
         model = Driver
-        fields = ('id', 'username', 'email', 'rides')
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'license_plate', 'busy')

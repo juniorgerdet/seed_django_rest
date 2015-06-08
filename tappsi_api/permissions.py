@@ -2,7 +2,7 @@
 #description     :Extend letucce for implemented BDD on Django.
 #author          :juniorgerdet
 #date            :04-06-2015
-#version         :0.4
+#version         :0.1
 #usage           :python manager harvest
 #notes           :
 #python_version  :2.7.10  

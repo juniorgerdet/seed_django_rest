@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,8 +55,6 @@ MIDDLEWARE_CLASSES = (
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
 )
 
@@ -74,6 +73,8 @@ DATABASES = {
     }
 }
 
+# if 'test' in sys.argv:
+    # DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -104,11 +105,22 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'TEST_REQUEST_RENDERER_CLASSES': (
+        'rest_framework.renderers.MultiPartRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer'
+    ),
     'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGINATE_BY': 10,                 # Default to 10
+    'PAGINATE_BY_PARAM': 'page_size',  # Allow client to override, using `?page_size=xxx`.
+    'MAX_PAGINATE_BY': 100 ,
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     # 'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.StandardResultsSetPagination'
-    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
+
 
 
 OAUTH2_PROVIDER = {
@@ -124,9 +136,6 @@ AUTHENTICATION_BACKENDS = (
     # Uncomment following if you want to access the admin
     # 'django.contrib.auth.backends.ModelBackend',
 )
-
-CORS_ORIGIN_ALLOW_ALL = True
-
 
 LOGGING = {
     'version': 1,
@@ -160,4 +169,44 @@ CACHES = {
 
 USER_AGENTS_CACHE = 'default'
 
-LETTUCE_SERVER_PORT = 7000
+# Nose
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+ 
+# Lettuce
+LETTUCE_SERVER_PORT = 9000
+
+ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = (
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE',
+        'OPTIONS'
+    )
+
+SWAGGER_SETTINGS = {
+    'api_key':'',
+    'info': {
+        'contact': 'juniorgerdet@gmail.com',
+        'description': 'This is a demo Full API Rest, based on tapsi api and made with'
+                       'django rest framework and other libraries, modules, features,'
+                       'with the purpose of validate my knowledges.'
+                       'My <a href="https://github.com/juniorgerdet"> Git Hub </a>, for open issues, improve...'
+                       'For this demo, you can use the api key  "Bearer WpcQH4L8Lf99cuQ2kWwITY8DD9xxM3" to test '
+                       'Evaluate through POSTMAN or another Rest Client why this Documentation not support Oauth 2.0'
+                       'for tests.',
+        'license': 'Apache 2.0',
+        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        'termsOfServiceUrl': 'http://helloreverb.com/terms/',
+        'title': 'Tappsi API Test',
+    },
+    'token_type':'access_token',
+    'doc_expansion': 'none',
+}
+# http://localhost:8000/api/v1/docs/api-docs
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'tappsi_api/templates'),
+) 

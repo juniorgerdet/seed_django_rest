@@ -36,14 +36,25 @@ Feature: Users
  	    | 12 | jpaz         | Test10   | jpaz@email.com         | Jessica    | Paz       | client      | 
  	    | 13 | lhurtado     | Test10   | lhurtado@email.com     | Luisa      | Hurtado   | client      | 
 		
+		Given I authenticate as user "lhurtado"
+
 		Given The following data on Ride
  	    | taxi_driver_id | client_id | origin                  | destiny               | active |
- 	    | 8             | 12        | Cruz del perdon         | Casco central         | true   |
- 	    | 3             | 10        | Centro, carrera 12      | La salida de calabozo | false  |
- 	    | 15            | 9         | La hoyada, torre 5      | La california         | true   |
- 	    | 7             | 2 	    | Miranda, parque central | Hosp. El llanito      | false  |
- 	    | 4             | 11        | Los samanes             | Chaparral             | false  |
+ 	    | 8              | 12        | Cruz del perdon         | Casco central         | true   |
+ 	    | 3              | 10        | Centro, carrera 12      | La salida de calabozo | false  |
+ 	    | 15             | 9         | La hoyada, torre 5      | La california         | true   |
+ 	    | 7              | 2 	     | Miranda, parque central | Hosp. El llanito      | false  |
+ 	    | 4              | 11        | Los samanes             | Chaparral             | false  |
 		
-		# Given I authenticate as user "lhurtado"
-		# When I send a GET request on "http://127.0.0.1:7000/api/v1/taxis/availables"
-  		# Then i get the responde code 201
+		Given The following data on Driver
+ 	    | id | license_plate | busy | user_id | 
+ 	    | 1  | 233vvv        | 1    | 8       | 
+ 	    | 3  | pav2212       | 0    | 7       | 
+ 	    | 2  | ccv2324       | 1    | 15      | 
+ 	    | 5  | 222oppp       | 0    | 6       | 
+ 	    | 6  | 222111q       | 0    | 5       | 
+ 	    | 7  | ers2111       | 0    | 4       | 
+ 	    | 7  | zxs12ux       | 0    | 3       | 
+		
+		When I send a GET request on "http://127.0.0.1:7000/api/v1/availables/"
+  		Then i get the responde code 200
