@@ -70,10 +70,10 @@ To register the app:
   
 Click on the link to create a new application and fill the form with the following data:
 
-Name: just a name of your choice
-Client Type: confidential
-Authorization Grant Type: Resource owner password-based
-Save your app!
+* Name: just a name of your choice
+* Client Type: confidential
+* Authorization Grant Type: Resource owner password-based
+* Save your app!
 
 # Documentation & Support
 
