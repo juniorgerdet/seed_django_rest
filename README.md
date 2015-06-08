@@ -1,4 +1,5 @@
-# [Tappsi API Test]
+# [Tappsi API Test
+[![Build Status](https://travis-ci.org/juniorgerdet/tappsi_test.png)](https://travis-ci.org/juniorgerdet/tappsi_test)
 
 **Great demo - seed API for test of powerful of Django, Python, Django Rest Framework and others**
 
