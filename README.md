@@ -16,6 +16,10 @@ A powerful combination:
 * Detection of Users Agents
 * Swagger Documentation
 
+## Author
+
+You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter.
+
 # Overview
 
 A seed with demo and combination of features powerful django rest, and demostration of skills for tappsi.co.
