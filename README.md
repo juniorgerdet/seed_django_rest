@@ -18,7 +18,7 @@ A powerful combination:
 
 # Overview
 
-Test of skill validation for tappsi.co.
+A demostration of skills for tappsi.co.
 
 # Requirements
 
