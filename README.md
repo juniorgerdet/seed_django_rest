@@ -16,9 +16,9 @@ A powerful combination:
 * Detection of Users Agents
 * Swagger Documentation
 
-## Author
+## Author: Junior Gerdet
 
-You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter.
+You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter. My email es juniorgerdet@gmail.com
 
 # Overview
 
