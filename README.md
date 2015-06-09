@@ -1,7 +1,7 @@
-# Tappsi API Test
+# Tappsi API Test Django Rest
 [![Build Status](https://travis-ci.org/juniorgerdet/tappsi_test.png)](https://travis-ci.org/juniorgerdet/tappsi_test)
 
-**Great demo - seed API for test of powerful of Django, Python, Django Rest Framework and others**
+**Great seed - demo of a Full API powerful with all main features of best practices on Django, Python, Django Rest Framework and others**
 
 A powerful combination:
 
@@ -18,7 +18,7 @@ A powerful combination:
 
 # Overview
 
-A demostration of skills for tappsi.co.
+A seed with demo and combination of features powerful django rest, and demostration of skills for tappsi.co.
 
 # Requirements
 
@@ -81,3 +81,7 @@ Click on the link to create a new application and fill the form with the followi
 The documentation of API is available at [http://127.0.0.1:8000/api/v1/docs][docs].
 
 For questions, juniorgerdet@gmail.com
+
+## Contact
+
+You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter.
