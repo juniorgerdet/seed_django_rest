@@ -18,7 +18,7 @@ A powerful combination:
 
 ## Author: Junior Gerdet
 
-You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter. My email es juniorgerdet@gmail.com
+You may also want to follow the [author](https://twitter.com/juniorgerdet) on Twitter. My email is juniorgerdet@gmail.com
 
 # Overview
 
