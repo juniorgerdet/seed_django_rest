@@ -74,10 +74,16 @@ def i_send_a_delete_request_on_url(step, url):
 	except Exception, e:
 		raise
 
-@step('i get the responde code (\d+)')
+@step('i get the response code (\d+)')
 def check_response(step, expected):
     code = world.response.status_code
     assert_equals(int(expected), code)
+
+@step('I get the response data with (\d+) items')
+def count_data_response(step, expected):
+    count = world.response.data["count"]
+    assert_equals(int(expected), count)
+
 
 @step('I get response data')
 def check_response(step, expected):
