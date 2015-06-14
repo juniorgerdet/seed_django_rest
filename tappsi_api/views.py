@@ -30,7 +30,8 @@ from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework_xml.parsers import XMLParser
 from rest_framework_xml.renderers import XMLRenderer
 from django.shortcuts import get_object_or_404
-
+from rest_framework import filters
+import django_filters
 
 class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = UserSerializer
@@ -94,16 +95,17 @@ class AvailableView(generics.ListAPIView):
         else:
             self.parser_classes=(XMLParser,)
             self.renderer_classes = (XMLRenderer,)
+
     def get(self, request, **kwargs):
         try:
-            drivers=Driver.objects.filter(busy=0)
+            queryset=self.get_queryset()
             if request.user_agent.is_pc:
-                serializer = DriverSerializer(drivers, many=True)
+                serializer = DriverSerializer(queryset, many=True)
                 return Response({'data':serializer.data}, template_name='index.html')
             else:
                 paginator = CustomCoursePaginator()
-                result_page = paginator.paginate_queryset(drivers, request)
-                serializer = DriverSerializer(drivers, many=True)
+                result_page = paginator.paginate_queryset(queryset, request)
+                serializer = DriverSerializer(queryset, many=True)
                 return paginator.get_paginated_response(serializer.data)
         except Exception, e:
             return Response({'error': e}, status=status.HTTP_400_BAD_REQUEST)
@@ -122,6 +124,12 @@ class AvailableView(generics.ListAPIView):
              #  request.user_agent.os.family 
              #  request.user_agent.os.version 
              #  request.user_agent.os.version_string 
+    def get_queryset(self):
+        queryset = Driver.objects.all()
+        busy = self.request.query_params.get('busy', None)
+        if busy is not None:
+            queryset = queryset.filter(busy=busy)
+        return queryset
 
 class CustomCoursePaginator(PageNumberPagination):
     def get_paginated_response(self, data):

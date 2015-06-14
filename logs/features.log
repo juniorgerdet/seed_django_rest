@@ -194,3 +194,18 @@ AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse`
 06/07/2015 08:17:35 PM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
 06/07/2015 08:17:35 PM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
 06/07/2015 08:17:39 PM R: http://127.0.0.1:7000/api/v1/availables/ 
+06/14/2015 07:32:47 AM R: {u'username': u'juniorgerdet', u'first_name': u'Junior', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'juniorgerdet@gmail.com', u'password': u'Test10', u'id': u'15'} 
+06/14/2015 07:32:47 AM R: {u'username': u'amartinez', u'first_name': u'Alexis', u'last_name': u'Martinez', u'role_alt': u'client', u'email': u'amartinez@email.com', u'password': u'Test10', u'id': u'2'} 
+06/14/2015 07:32:48 AM R: {u'username': u'jlopez', u'first_name': u'Jesus', u'last_name': u'Lopez', u'role_alt': u'taxi_driver', u'email': u'jlopez@email.com', u'password': u'Test10', u'id': u'3'} 
+06/14/2015 07:32:49 AM R: {u'username': u'mherrera', u'first_name': u'Miguel', u'last_name': u'Herrera', u'role_alt': u'taxi_driver', u'email': u'mherrera@email.com', u'password': u'Test10', u'id': u'4'} 
+06/14/2015 07:32:50 AM R: {u'username': u'fhernandez', u'first_name': u'Felix', u'last_name': u'Hernandez', u'role_alt': u'taxi_driver', u'email': u'fhernandez@email.com', u'password': u'Test10', u'id': u'5'} 
+06/14/2015 07:32:50 AM R: {u'username': u'sgarcia', u'first_name': u'Samuel', u'last_name': u'Gracia', u'role_alt': u'taxi_driver', u'email': u'sgarcia@email.com', u'password': u'Test10', u'id': u'6'} 
+06/14/2015 07:32:50 AM R: {u'username': u'dmartinez', u'first_name': u'Diego', u'last_name': u'Martinez', u'role_alt': u'taxi_driver', u'email': u'dmartinez@email.com', u'password': u'Test10', u'id': u'7'} 
+06/14/2015 07:32:51 AM R: {u'username': u'agerdet', u'first_name': u'Alex', u'last_name': u'Gerdet', u'role_alt': u'taxi_driver', u'email': u'agerdet@email.com', u'password': u'Test10', u'id': u'8'} 
+06/14/2015 07:32:51 AM R: {u'username': u'mcastillo', u'first_name': u'Maria', u'last_name': u'Castillo', u'role_alt': u'client', u'email': u'mcastillo@email.com', u'password': u'Test10', u'id': u'9'} 
+06/14/2015 07:32:51 AM R: {u'username': u'jsilva', u'first_name': u'Jennifer', u'last_name': u'Silva', u'role_alt': u'client', u'email': u'jsilva@email.com', u'password': u'Test10', u'id': u'10'} 
+06/14/2015 07:32:52 AM R: {u'username': u'sbarreto', u'first_name': u'Sofia', u'last_name': u'Barreto', u'role_alt': u'client', u'email': u'sbarreto@email.com', u'password': u'Test10', u'id': u'11'} 
+06/14/2015 07:32:52 AM R: {u'username': u'jpaz', u'first_name': u'Jessica', u'last_name': u'Paz', u'role_alt': u'client', u'email': u'jpaz@email.com', u'password': u'Test10', u'id': u'12'} 
+06/14/2015 07:32:52 AM R: {u'username': u'lhurtado', u'first_name': u'Luisa', u'last_name': u'Hurtado', u'role_alt': u'client', u'email': u'lhurtado@email.com', u'password': u'Test10', u'id': u'13'} 
+06/14/2015 07:32:54 AM Not Found: /api/v1/availables/
+06/14/2015 07:32:55 AM R: http://127.0.0.1:7000/api/v1/availables/ 
