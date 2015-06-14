@@ -114,12 +114,10 @@ class AvailableView(generics.ListAPIView):
             """
              #  request.user_agent.is_touch_capable 
              #  request.user_agent.is_bot 
-
              #  request.user_agent.browser
              #  request.user_agent.browser.family 
              #  request.user_agent.browser.version 
              #  request.user_agent.browser.version_string 
-
              #  request.user_agent.os 
              #  request.user_agent.os.family 
              #  request.user_agent.os.version 
