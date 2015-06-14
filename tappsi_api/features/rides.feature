@@ -22,4 +22,4 @@ Feature: Rides
 	    }
 	    """ 
 		When I send a POST request on "http://127.0.0.1:9000/api/v1/rides/"
-    	Then i get the responde code 201
+    	Then i get the response code 201
