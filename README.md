@@ -82,7 +82,7 @@ Click on the link to create a new application and fill the form with the followi
 
 # Documentation & Support
 
-The documentation of API is available at [http://127.0.0.1:8000/api/v1/docs][docs].
+The documentation of API is available at [docs](http://127.0.0.1:8000/api/v1/docs).
 
 For questions, juniorgerdet@gmail.com
 
