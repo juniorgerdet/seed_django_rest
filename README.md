@@ -1,7 +1,7 @@
 # Tappsi API Test Django Rest
 [![Build Status](https://travis-ci.org/juniorgerdet/tappsi_test.png)](https://travis-ci.org/juniorgerdet/tappsi_test)
 
-**Great seed - demo of a Full API powerful with all main features of best practices on Django, Python, Django Rest Framework and others**
+**Great seed - demo of a Full API powerful with all main features of best practices on Django, Python, Django Rest Framework and others for Taxi Apps **
 
 A powerful combination:
 
@@ -22,7 +22,7 @@ You may also want to follow the [author](https://twitter.com/juniorgerdet) on Tw
 
 # Overview
 
-A seed with demo and combination of features powerful django rest, and demostration of skills for tappsi.co.
+A seed with demo and combination of features powerful django rest for Taxi Apps.
 
 # Requirements
 
