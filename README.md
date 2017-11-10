@@ -53,7 +53,7 @@ Preparation:
     
 For execute the automatized test:
 
-    python manage.py -d harvest tappsi_api/features/
+    python manage.py harvest -d tappsi_api/features/
 
 
 **Note**:   The next step is optional, when you execute the automatized tests, the database is loaded with the credentials.
@@ -63,7 +63,7 @@ To register the app:
 
   To obtain a valid access_token first we must register an application. DOT has a set of customizable views you can use to CRUD application instances, just point your browser at:
 
-    python manager.py runserver 
+    python manage.py runserver 
     
   Access to url and login with superuser:
 
