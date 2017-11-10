@@ -45,15 +45,15 @@ Install using `pip`...
 
 Preparation:
 
-    python manager.py migrate
-    python manager.py makemigrations tappsi_api
-    python manager.py sqlmigrate tappsi_api 0001 
-    python manager.py migrate
-    python manager.py createsuperuser
+    python manage.py migrate
+    python manage.py makemigrations tappsi_api
+    python manage.py sqlmigrate tappsi_api 0001 
+    python manage.py migrate
+    python manage.py createsuperuser
     
 For execute the automatized test:
 
-    python manager.py -d harvest tappsi_api/features/
+    python manage.py -d harvest tappsi_api/features/
 
 
 **Note**:   The next step is optional, when you execute the automatized tests, the database is loaded with the credentials.
